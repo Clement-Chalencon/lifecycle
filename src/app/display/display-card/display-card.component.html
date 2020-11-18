@@ -1,0 +1,9 @@
+<mat-card>
+    <div>
+        {{item.value}}
+    </div>
+    <div class="action-buttons">
+        <button mat-flat-button color="accent" (click)="editItem(item)">Edit</button>
+        <button mat-flat-button (click)="delectedItem(item)">Delete</button>
+    </div>
+</mat-card>

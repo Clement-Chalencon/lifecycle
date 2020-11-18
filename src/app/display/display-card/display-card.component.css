@@ -1,0 +1,12 @@
+mat-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: #7b1fa2;
+  /* margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10px; */
+}
+
+.action-buttons button {
+  margin: 5px 5px 5px 5px;
+}
