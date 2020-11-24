@@ -24,14 +24,14 @@ export class AddItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.itemForm.valid) {
       this.showError = false;
       this.itemOut.emit(this.itemForm.value);
       this.itemForm.reset();
-      this.numberOfAttempts = 0
+      this.numberOfAttempts = 0;
     } else {
-      this.numberOfAttempts++
+      this.numberOfAttempts++;
       this.showError = true;
     }
   }

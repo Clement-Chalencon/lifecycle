@@ -16,7 +16,7 @@ export class DisplayCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  editItem(item: any) {
+  editItem(item: any): void {
   }
 
   delectedItem(item: any): void {

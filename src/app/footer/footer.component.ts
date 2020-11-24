@@ -1,26 +1,50 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChange,
+  SimpleChanges,
+} from '@angular/core';
 
+// tslint:disable-next-line: no-conflicting-lifecycle
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  styleUrls: ['./footer.component.css'],
 })
-export class FooterComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
-
+export class FooterComponent
+  implements
+    OnInit,
+    OnChanges,
+    DoCheck,
+    AfterContentInit,
+    AfterContentChecked,
+    AfterViewInit,
+    AfterViewChecked,
+    OnDestroy {
   @Input() numberOfItems: number;
 
   order = 0;
 
   constructor() {
     this.order++;
-    // console.log(this.order + ': contrsuctor from footer');
+    // console.log(this.order + ': constructor from footer');
   }
 
   /* ----------------------------- LifeCycle Hooks ---------------------------- */
 
-  ngOnChanges(): void {
+  ngOnChanges(change: SimpleChanges): void {
     this.order++;
-    // console.log(this.order + ': OnChanges from footer');
+    console.log(this.order + ': OnChanges from footer');
+    console.log('previous current :' + change.numberOfItems.previousValue);
+    console.log('previous previous :' + change.numberOfItems.currentValue);
   }
 
   ngOnInit(): void {
@@ -57,7 +81,4 @@ export class FooterComponent implements OnInit, OnChanges, DoCheck, AfterContent
     this.order++;
     // console.log(this.order + ': OnDestroy from footer');
   }
-
-
-
 }
