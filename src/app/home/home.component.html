@@ -1,10 +1,10 @@
 <app-header (isCloudy)="onDisplayClouds($event)"></app-header>
-<div class="main">
+<div #mainDiv class="main">
     <app-add-item (itemOut)="addItemList($event)"></app-add-item>
     <app-display-list [itemList]="itemList" (deleteOut)="deleteItem($event)">
     </app-display-list>
     <app-error *ngIf="itemList.length == 0">
-        <app-error-message message="There are no items in the list"></app-error-message>
+        <app-error-message message="No items in your the list"></app-error-message>
     </app-error>
 </div>
 <app-footer *ngIf="isCloudy" [numberOfItems]="numberOfItems"></app-footer>

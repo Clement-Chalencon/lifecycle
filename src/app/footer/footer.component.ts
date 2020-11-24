@@ -42,7 +42,7 @@ export class FooterComponent
 
   ngOnChanges(change: SimpleChanges): void {
     this.order++;
-    console.log(this.order + ': OnChanges from footer');
+    // console.log(this.order + ': OnChanges from footer');
     console.log('previous current :' + change.numberOfItems.previousValue);
     console.log('previous previous :' + change.numberOfItems.currentValue);
   }

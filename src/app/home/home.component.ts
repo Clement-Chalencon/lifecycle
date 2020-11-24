@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, AfterViewChecked, OnDestroy, ElementRef } from '@angular/core';
 import { AppService } from '../app-service/app-service.service';
 import { FooterComponent } from '../footer/footer.component';
 
@@ -7,15 +7,16 @@ import { FooterComponent } from '../footer/footer.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
+export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked, OnDestroy {
   itemList: any[] = [];
   numberOfItems;
 
   isCloudy = true;
 
   @ViewChild(FooterComponent) footer: FooterComponent;
+  @ViewChild('mainDiv') mainDiv: ElementRef;
 
-  constructor(private appService: AppService) {}
+  constructor(private appService: AppService) { }
 
   addItemList(item: any) {
     this.appService.addItems(item);
@@ -43,8 +44,9 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
     setTimeout(() => {
       try {
         this.footer.numberOfItems = this.itemList.length;
-      } catch (error) {}
+      } catch (error) { }
     });
+    console.log(this.mainDiv.nativeElement);
   }
 
   ngAfterViewChecked(): void {
@@ -56,4 +58,9 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterViewChecked {
     //   }
     // });
   }
+
+  ngOnDestroy() {
+    this.appService.items.unsubscribe();
+  }
+
 }
